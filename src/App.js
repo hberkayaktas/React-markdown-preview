@@ -2,7 +2,6 @@ import Header from "./Components/Header";
 import InputTaker from "./Components/InputTaker";
 import Preview from "./Components/Preview";
 import Footer from "./Components/Footer";
-import logo from "./logo.svg";
 import "./style.css";
 
 function App() {

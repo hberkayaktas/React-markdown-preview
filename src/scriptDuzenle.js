@@ -1,9 +1,9 @@
       
-async function duzenle(text) {
+export  function duzenle(text) {
   let kalici_degisken =0;
   var sonuc = text.split("\n");
   var newArr = [];
-  await sonuc.map((item, index) => {
+   sonuc.map((item, index) => {
     // filtreleme sayacı 
     let filtre = 0;
    
@@ -68,13 +68,13 @@ async function duzenle(text) {
     if (numberS.test(trimlenmis)) {
 
       if (!numberS.test(sonuc[index-1].trim())) {
-        newArr.push("<ol><li>" + item.slice(1,) + "</li>");
+        newArr.push("<ol><li>" + item.slice(5,) + "</li>");
       } 
       if(numberS.test(sonuc[index-1].trim()) && numberS.test(sonuc[index+1].trim())){
-        newArr.push("<li>" + item.slice(1,) + "</li>");
+        newArr.push("<li>" + item.slice(5,) + "</li>");
       }
       if(!numberS.test(sonuc[index+1].trim())){
-        newArr.push("<li>" + item.slice(1,) + "</li></ol>");
+        newArr.push("<li>" + item.slice(5,) + "</li></ol>");
       }
       filtre++;
     }
@@ -117,6 +117,7 @@ async function duzenle(text) {
 
     //console.log(filtre,kalici_degisken);
   });
-  console.log(sonuc);
-  console.log(newArr);
+ // console.log(sonuc);
+ // console.log(newArr);
+  return newArr;
 }
