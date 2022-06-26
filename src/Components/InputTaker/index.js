@@ -1,4 +1,3 @@
-import {useState} from "react";
 import {setTextState} from '../../redux/textSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {itemSafhali } from '../../redux/textSlice';
