@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 function Header() {
   const dispatch = useDispatch();
   const Text = `
-  Heading
+Heading
 =======
 
 Sub-heading
