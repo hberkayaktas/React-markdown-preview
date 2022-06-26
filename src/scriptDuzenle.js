@@ -11,33 +11,47 @@ export  function duzenle(text) {
     // satır içi düzenlemeleri
     let partialize = item.split(" ",);
     //console.log(partialize)
-    partialize.map((p_item,p_index)=>{
+    partialize.map((p_item,p_index,Con_arr)=>{
       //eğer sonda virgül varsa alma
       if(p_item.endsWith(",")){
         p_item = p_item.slice(0,-1)
       }
+      
+      
       //eğer yıldız ile başlayıp yıldız ile bitiyorsa
       if(p_item.startsWith("*") && p_item.endsWith("*") && p_item.length>3){
+        filtre++;
         //eğer 2.index de * ise
         if(p_item[1] == "*" && p_item[p_item.length-1] == "*"){
           //console.log("eşleşnewar:bold",partialize);
-          newArr.push("<b>"+ p_item.slice(2,-2)+"</b>" )
+          let qİtem  = "<b>"+ p_item.slice(2,-2)+"</b>" ;
+          partialize[p_index] = qİtem;
         }else{
           //console.log("eşleşnewar:italik",partialize);
           //newArr.push("<i>"+ p_item.slice(1,-1)+"</i>" )
           let qİtem = "<i>"+ p_item.slice(1,-1)+"</i>";
-          //newREg =new RegExp(p_item,"g");
-          newArr.push(qİtem)
+         
+          //var reg = new RegExp(p_item,"gi");
+          //console.log(item.slice(p_index,p_item.length),p_index,p_item.length);
+          partialize[p_index] = qİtem;
+        }
+        //console.log(p_item)
+        console.log(Con_arr.toString().replace(/,/gi," "))
+        if(Con_arr.length == (p_index+1)){
+
+          newArr.push("<p>"+Con_arr.toString().replace(/,/gi," ") +"</p>")
         }
       }
 
       // codyapısı mı ?
-      if(p_item.startsWith("\`") && p_item.endsWith("\`") && p_item.length>3){
+      else if(p_item.startsWith("\`") && p_item.endsWith("\`") && p_item.length>3){
         newArr.push("<code>"+ p_item.slice(1,-1)+"</code>" )
+        filtre++;
       }
       // üstü çizilimi 
-      if(p_item.startsWith("~~") && p_item.endsWith("~~") && p_item.length>3){
-        newArr.push("<del>"+ p_item.slice(2,-2)+"</del>" )
+      else if(p_item.startsWith("~~") && p_item.endsWith("~~") && p_item.length>3){
+        newArr.push("<del>"+ p_item.slice(2,-2)+"</del>" );
+        filtre++;
       }
     })
     // hash başlıklar
